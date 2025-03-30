@@ -1,0 +1,71 @@
+[
+    {
+        "id": 1,
+        "title": "AI简介",
+        "videoUrl": "https://cdn.pixabay.com/video/2025/03/12/264272_large.mp4",
+        "uploadTime": "2023-05-01"
+        
+        
+    },
+    {
+        "id": 2,
+        "title": "AI工具说明",
+        "videoUrl": "https://cdn.pixabay.com/video/2025/03/16/265271_large.mp4",
+
+        "uploadTime": "2023-05-01"
+        
+        
+    },
+ 
+    {
+        "id": 3,
+        "title": "机器学习基础",
+        "videoUrl": "https://cdn.pixabay.com/video/2025/04/01/265000_large.mp4",
+        "uploadTime": "2023-05-08"
+        
+        
+    }, 
+    {
+        "id": 4,
+        "title": "深度学习入门",
+        "videoUrl": "https://cdn.pixabay.com/video/2025/04/02/265001_large.mp4",
+        "uploadTime": "2023-05-04"
+        
+    },
+    {
+        "id": 5,
+        "title": "神经网络结构",
+        "videoUrl": "https://cdn.pixabay.com/video/2025/04/03/265002_large.mp4",
+        "uploadTime": "2023-05-06"
+    },
+    {
+        "id": 6,
+        "title": "数据预处理",
+        "videoUrl": "https://cdn.pixabay.com/video/2024/05/29/214409_large.mp4",
+        "uploadTime": "2023-05-09"
+    },
+    {
+        "id": 7,
+        "title": "模型训练与优化",
+        "videoUrl": "https://cdn.pixabay.com/video/2025/04/05/265004_large.mp4",
+        "uploadTime": "2023-05-11"
+    },
+    {
+        "id": 8,
+        "title": "模型评估与验证",
+        "videoUrl": "https://cdn.pixabay.com/video/2025/04/06/265005_large.mp4",
+        "uploadTime": "2023-05-21"
+    },
+    {
+        "id": 9,
+        "title": "AI在实际应用中的案例",
+        "videoUrl": "https://cdn.pixabay.com/video/2025/04/07/265006_large.mp4",
+        "uploadTime": "2023-05-31"
+    },
+    {
+        "id": 10,
+        "title": "未来趋势与展望",
+        "videoUrl": "https://cdn.pixabay.com/video/2025/04/08/265007_large.mp4",
+        "uploadTime": "2023-05-12"
+    }
+]

@@ -1,0 +1,64 @@
+name: namer_app
+description: A new Flutter project.
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 0.0.1+1
+
+environment:
+  sdk: '>=2.19.4 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  english_words: ^4.0.0
+  provider: ^6.1.2
+  card_swiper: ^3.0.1
+  fl_chart: ^0.70.2
+  syncfusion_flutter_gauges: ^28.2.12
+  regexed_validator: ^2.0.0+1
+  enough_mail: ^2.1.6
+  video_player: ^2.9.3
+  chewie: ^1.11.0
+  heroicons: ^0.11.0
+  amap_map: ^1.0.15
+
+  
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^5.0.0
+
+
+flutter:
+  uses-material-design: true
+  assets:
+    - lib/json/data.json
+    - lib/json/101.json
+    - lib/json/v1001.json
+    - lib/image/iot0102.jpg
+    - lib/image/java-250220.jpg
+    - lib/image/jichuban-20252.jpg
+    - lib/image/1.avif
+    - lib/image/2.avif
+    - lib/image/3.avif
+    - lib/image/4.avif
+    - lib/json/videoinfo.json
+    - lib/image/blog/b1.webp
+    - lib/image/blog/b2.webp
+    - lib/image/blog/b3.webp
+    - lib/image/blog/b4.webp
+    - lib/image/device/AED.jpg
+    - lib/image/device/danjia.jpg
+    - lib/image/device/miehuoqi.png
+    - lib/image/device/firstaid.png
+    - lib/image/device/lunyi.jpg
+    - lib/image/device/sos.jpg
+
+
+    
+    
