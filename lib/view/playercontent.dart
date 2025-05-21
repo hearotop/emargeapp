@@ -3,8 +3,10 @@ import 'package:namer_app/utils/cheplayer.dart';
 import 'package:namer_app/view/intro.dart';
 import 'package:namer_app/class/video.dart';
 import 'package:provider/provider.dart';
+import 'package:namer_app/database_helper.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'dart:convert';
+// 导入数据库帮助类
 
 class ContentPage extends StatefulWidget {
   final Video video;
@@ -22,8 +24,7 @@ Future<List<Map<String, dynamic>>> _loadData(Video video) async {
 }
 
 class _ContentPageState extends State<ContentPage> {
-  late String _videoUrl =
-      "https://cdn.pixabay.com/video/2025/03/16/265271_large.mp4";
+  late String _videoUrl =widget.video.videoPath;
   late Future<List<Map<String, dynamic>>> _dataFuture;
 
   @override
@@ -34,7 +35,6 @@ class _ContentPageState extends State<ContentPage> {
     _dataFuture.then((data) {
       if (data.isNotEmpty) {
         _videoUrl = data[0]['videoUrl'];
-        print("ssssss$_videoUrl");
       }
     }).catchError((error) {
       print('Error loading data: $error');
@@ -45,9 +45,29 @@ class _ContentPageState extends State<ContentPage> {
     setState(() {
       _videoUrl = newUrl;
     });
+    // 记录视频地址和已播放时长
+    _recordPlayHistory(newUrl, '0');
+  }
+
+  // 记录播放历史的方法
+  Future<void> _recordPlayHistory(String videoUrl, String duration) async {
+    final dbHelper = DatabaseHelper();
+    await dbHelper.insertPlayHistory({
+      'videoId':widget.video.id, // 简单使用哈希值作为视频 ID
+      'title': widget.video.title,
+      'timestamp':'',
+      'duration': duration,
+      'coverUrl': widget.video.imageUrl,
+      'videoUrl': videoUrl
+    });
   }
 
   @override
+  void dispose() {
+    _recordPlayHistory(_videoUrl, '0');
+    super.dispose();
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('视频播放')),

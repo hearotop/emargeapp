@@ -5,7 +5,7 @@ import 'answer.dart';
 
 class TestPage extends StatelessWidget {
   Future<List<Map<String, dynamic>>> _loadData() async {
-    String jsonString = await rootBundle.loadString('lib/json/data.json');
+    String jsonString = await rootBundle.loadString('lib/json/know.json');
 
     List<dynamic> data = json.decode(jsonString);
     return List<Map<String, dynamic>>.from(data);

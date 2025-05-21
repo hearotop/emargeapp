@@ -20,10 +20,17 @@ Future<List<Map<String, dynamic>>> _loadData() async {
 
 class _PlayerPageState extends State<PlayerPage> {
   String basepath = "lib/image/";
+ /* List<Image> images = [
+    Image.network('https://i0.hdslb.com/bfs/archive/1fd5d82320b11d15173f53578ab754c882a1860c.jpg@672w_378h_1c_!web-search-common-cover.avif', fit: BoxFit.fill),
+    Image.network('https://archive.biliimg.com/bfs/archive/5bec09828624dc12c396515fdc5bc5929e842ce4.jpg@672w_378h_1c_!web-search-common-cover.avif', fit: BoxFit.fill),
+    Image.network('https://i0.hdslb.com/bfs/archive/ad8d6985e113eb8947ce9bec73c8f41075161a7a.jpg@672w_378h_1c_!web-search-common-cover.avif', fit: BoxFit.fill),
+  ];*/
   List<Image> images = [
-    Image.asset('lib/image/iot0102.jpg', fit: BoxFit.fill),
-    Image.asset('lib/image/java-250220.jpg', fit: BoxFit.fill),
-    Image.asset('lib/image/jichuban-20252.jpg', fit: BoxFit.fill),
+    Image.asset('lib/image/1.avif', fit: BoxFit.fill),
+    Image.asset('lib/image/2.avif', fit: BoxFit.fill),
+    Image.asset('lib/image/3.avif', fit: BoxFit.fill),
+    Image.asset("lib/image/4.avif", fit: BoxFit.fill)
+
   ];
   @override
   Widget build(BuildContext context) {

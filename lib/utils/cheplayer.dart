@@ -11,9 +11,15 @@ class VideoPlayerPer with ChangeNotifier, DiagnosticableTreeMixin {
   String _videoUrl = ' ';
   String get videoUrl => _videoUrl;
   int get count => _count;
+  String _timeStamp = '0';
+  String get timeStamp => _timeStamp;
   Future<void> updateVideoUrl(String newVideoUrl) async {
     _videoUrl = newVideoUrl;
     notifyListeners(); // 通知所有监听者数据已更改
+  }
+
+  Future<void> recordPlayTime(String duration) async {
+    _timeStamp = duration;
   }
 
   /// Makes `Counter` readable inside the devtools by listing all of its properties
@@ -46,6 +52,12 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
     _videoPlayerPer = Provider.of<VideoPlayerPer>(context, listen: false);
     _initializeVideoPlayer(widget.initialVideoUrl);
     _videoPlayerPer.addListener(_updateVideo);
+    // 添加监听视频播放进度
+    _videoPlayerController.addListener(() async {
+      if (_videoPlayerController.value.isPlaying) {
+        Duration position = _videoPlayerController.value.position;
+      }
+    });
   }
 
   void _initializeVideoPlayer(String videoUrl) {
@@ -79,4 +91,11 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
   Widget build(BuildContext context) {
     return Scaffold(body: Chewie(controller: _chewieController));
   }
+}
+
+String _playPosition = '0';
+String get playPosition => _playPosition;
+
+Future<void> recordPlayPosition(String position) async {
+  _playPosition = position;
 }

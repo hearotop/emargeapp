@@ -184,7 +184,7 @@ class _BumbleBeeRemoteVideoState extends State<_BumbleBeeRemoteVideo> {
   void initState() {
     super.initState();
     _controller = VideoPlayerController.networkUrl(
-      Uri.parse('https://cdn.pixabay.com/video/2025/03/12/264272_large.mp4'),
+      Uri.parse('http://192.168.149.74:9000/anzhuo/xffs.mp4'),
       closedCaptionFile: _loadCaptions(),
       videoPlayerOptions: VideoPlayerOptions(mixWithOthers: true),
     );
