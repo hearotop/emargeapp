@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:namer_app/setting/setting.dart';
-import 'package:namer_app/history_page.dart';
 
 class ProfilePage extends StatelessWidget {
   List<Map<String, dynamic>> menuItems = [
@@ -8,11 +7,6 @@ class ProfilePage extends StatelessWidget {
       'title': '我的收藏',
       'icon': Icons.favorite_border,
       'color': Colors.red,
-    },
-    {
-      'title': '历史记录',
-      'icon': Icons.history,
-      'color': Colors.blue,
     },
     {
       'title': '我的设备',
@@ -173,23 +167,16 @@ class ProfilePage extends StatelessWidget {
         );
         break;
       case 1:
-      Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => HistoryPage()),
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('我的设备')),
         );
         break;
       case 2:
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('我的设备')),
-          
-        );
-        break;
-      case 3:
-        ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('消息通知')),
         );
         break;
-      case 4:
+      case 3:
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => SettingsPage()),

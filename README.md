@@ -24,7 +24,7 @@ Supported device types include:
 - 🔗 **IoT device integration**: connect IoT first-aid kits and wearables to obtain real-time device status and health data
 - 🏭 **Open manufacturer access**: an open integration design for first-aid kits — manufacturers of all brands are welcome to connect their devices
 - 🤝 **Device sharing**: users can share their own first-aid devices, giving people nearby one more lifeline in an emergency
-- 📖 **First-aid knowledge & video guides**: built-in first-aid educational content and video tutorials to help people respond calmly and correctly
+- 📖 **First-aid knowledge guides**: built-in first-aid educational content to help people respond calmly and correctly
 - 📞 **Quick dial for emergency contacts**
 - 🔄 **Real-time device status updates**
 
@@ -47,8 +47,6 @@ Supported device types include:
 
 - [Flutter](https://flutter.dev/)
 - [AMap `amap_map` plugin](https://lbs.amap.com/)
-- SQLite (local data storage)
-- Provider (state management)
 
 ## 📝 How to Use
 
