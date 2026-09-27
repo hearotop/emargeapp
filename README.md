@@ -1,88 +1,102 @@
-# 🚑 物联急救设备共享平台
+# 🚑 IoT First-Aid Device Sharing Platform
 
-<p>让每一台物联急救设备都能被需要的人快速找到，为生命争取黄金时间！</p>
+English | [简体中文](README.zh.md)
 
-## 📱 项目简介
+I'm a college student who loves building things, and I'm also running this as a public-interest project. Any support is greatly appreciated!
 
-本应用致力于通过物联网（IoT）技术，连接身边的各类急救设备与可穿戴健康设备。用户打开应用即可在首页以**卡片形式**查看附近的急救设备及其实时状态，在紧急情况下快速取用设备，用于自救或救助他人。
+<p>Helping people in need quickly find every IoT-connected first-aid device nearby — winning the golden minutes to save lives!</p>
 
-接入的设备类型包括：
+## 📱 About This Project
 
-- 🏥 自动体外除颤器（AED）
-- 🎒 物联急救箱（支持多厂商设备接入）
-- ⌚ 可穿戴设备（智能手表、智能手环等）
-- 🩺 其他物联急救设备（担架、轮椅、紧急呼叫系统等）
+This app uses Internet of Things (IoT) technology to connect all kinds of first-aid devices and wearable health devices around us. As soon as users open the app, nearby first-aid devices and their real-time status are displayed as **cards on the home screen**, so devices can be reached quickly in an emergency — for self-rescue or to help others.
 
-## ✨ 主要功能
+Supported device types include:
 
-- 🗂️ **附近设备卡片**：首页以卡片流展示附近的急救设备，设备类型、位置、在线/可用状态一目了然
-- 🗺️ **实时地图定位**：基于高德地图查看设备分布，一键导航快速到达设备位置
-- 🔗 **物联设备接入**：对接物联急救箱与可穿戴设备，实时获取设备状态与健康数据
-- 🏭 **开放厂商接入**：急救箱数据采用开放接入设计，欢迎各厂商设备统一接入平台
-- 🤝 **设备共享**：用户可共享自己的急救设备，让周边的人在紧急时刻多一份保障
-- 📖 **急救知识与视频指南**：内置急救科普内容与视频教程，临危不乱、正确施救
-- 📞 **紧急联系人快速拨号**
-- 🔄 **设备状态实时更新**
+- 🏥 Automated External Defibrillators (AED)
+- 🎒 IoT first-aid kits (open to devices from multiple manufacturers)
+- ⌚ Wearable devices (smart watches, smart bands, etc.)
+- 🩺 Other IoT first-aid equipment (stretchers, wheelchairs, emergency call systems, etc.)
 
-## 🔌 物联设备接入规划
+## ✨ Key Features
 
-- **物联急救箱**：接入后可上报箱内物资清单、开箱记录、补给与维保状态
-- **可穿戴设备**：接入智能手表、智能手环，获取心率等健康数据，异常时辅助发起求助
-- **第三方厂商**：提供统一的设备接入规范，不同品牌的急救箱均可接入，共同构建设备网络
+- 🗂️ **Nearby device cards**: the home screen shows nearby first-aid devices as a card feed, with device type, location, and online/availability status at a glance
+- 🗺️ **Real-time map & positioning**: view device distribution on AMap and navigate to a device with one tap
+- 🔗 **IoT device integration**: connect IoT first-aid kits and wearables to obtain real-time device status and health data
+- 🏭 **Open manufacturer access**: an open integration design for first-aid kits — manufacturers of all brands are welcome to connect their devices
+- 🤝 **Device sharing**: users can share their own first-aid devices, giving people nearby one more lifeline in an emergency
+- 📖 **First-aid knowledge & video guides**: built-in first-aid educational content and video tutorials to help people respond calmly and correctly
+- 📞 **Quick dial for emergency contacts**
+- 🔄 **Real-time device status updates**
 
-> 📐 数据库设计可参考仓库中的《共享应急设备App数据库设计.docx》。
+## 🔌 IoT Device Integration Roadmap
 
-## 💡 技术特点
+- **IoT first-aid kits**: once connected, kits can report inventory lists, opening records, and replenishment/maintenance status
+- **Wearable devices**: connect smart watches and bands to obtain health data such as heart rate, and help trigger a call for help when abnormalities are detected
+- **Third-party manufacturers**: a unified device integration specification allows first-aid kits of different brands to connect, building a shared device network together
 
-- 🎯 基于高德地图的高精度定位与导航
-- ⚡ 物联设备数据实时同步
-- 📱 Flutter 跨平台开发，Android / iOS 一套代码
-- 👥 简洁友好的卡片式界面
+> 📐 For the database design, see *共享应急设备App数据库设计.docx* in this repository.
 
-### 🛠️ 技术栈
+## 💡 Technical Highlights
+
+- 🎯 High-precision positioning and navigation based on AMap
+- ⚡ Real-time synchronization of IoT device data
+- 📱 Cross-platform development with Flutter — one codebase for Android / iOS
+- 👥 A clean, user-friendly card-based interface
+
+### 🛠️ Tech Stack
 
 - [Flutter](https://flutter.dev/)
-- [高德地图 amap_map 插件](https://lbs.amap.com/)
-- SQLite（本地数据存储）
-- Provider（状态管理）
+- [AMap `amap_map` plugin](https://lbs.amap.com/)
+- SQLite (local data storage)
+- Provider (state management)
 
-## 📝 使用说明
+## 📝 How to Use
 
-1. 📱 打开应用
-2. 🔒 允许位置权限
-3. 🗂️ 在首页卡片中浏览附近的急救设备及状态
-4. 🗺️ 或在地图上查看设备分布
-5. 👆 点击设备卡片查看详细信息
-6. 🚶 使用导航功能快速到达设备位置，开展自救或救助他人
+1. 📱 Open the app
+2. 🔒 Grant location permission
+3. 🗂️ Browse nearby first-aid devices and their status on the home screen cards
+4. 🗺️ Or view device distribution on the map
+5. 👆 Tap a device card to see detailed information
+6. 🚶 Use navigation to reach the device quickly for self-rescue or to help others
 
-## 🤝 贡献指南
+## 🤝 Contributing
 
-本项目由个人开发者维护，欢迎社会各界人士参与开发，也欢迎急救设备厂商对接接入，共同为拯救生命贡献一份力量！
+This project is maintained by an individual developer. Everyone is welcome to contribute, and first-aid device manufacturers are especially welcome to integrate with the platform — let's work together to help save lives!
 
-## 🙏 致谢
+## 🙏 Acknowledgements
 
-作为个人开发者，特别感谢以下服务提供的免费支持：
+As an individual developer, I'm especially grateful for the free support from:
 
-- **[高德开放平台](https://lbs.amap.com/)**：提供免费的地图 API 支持
-- **[Trae](https://www.trae.ai/)**：提供免费的 AI 编程额度，助力本项目开发
+- **[AMap Open Platform](https://lbs.amap.com/)** — free map API support
+- **[Trae](https://www.trae.ai/)** — free AI coding credits that power the development of this project
 
-## 📞 联系方式
+## 📞 Contact
 
-如有问题、建议或厂商合作意向，请通过以下方式联系我们：
+For questions, suggestions, or manufacturer cooperation, please reach out at:
 
-- 📧 邮箱：[hearotop@outlook.com]
+- 📧 Email: [hearotop@outlook.com]
 
-<p>感谢你的支持! 🙏</p>
+<p>Thank you for your support! 🙏</p>
 
 ---
 
 <div align="center">
-  <p>❤️ 珍爱生命，关怀你我 ❤️</p>
+  <p>❤️ Cherish life, care for one another ❤️</p>
 </div>
 
-### 如果喜欢请赞助一下吧！🫠
+### Sponsor this project 🫠
+
+If you find this project helpful, please consider sponsoring me on GitHub Sponsors:
+
+<p>
+  <a href="https://github.com/sponsors/hearotop">
+    <img src="https://img.shields.io/badge/Sponsor%20me%20on-GitHub%20Sponsors-ea4aaa?style=for-the-badge&logo=githubsponsors&logoColor=white" alt="Sponsor me on GitHub Sponsors">
+  </a>
+</p>
+
+You can also support me via WeChat or Alipay:
 
 <div style="display: flex; gap: 10px; margin-top: 20px;">
-    <img src="https://gitee.com/hearotop/note/raw/master/assert/wx.jpg" alt="微信" style="width: 200px; height: 200px; border-radius: 10px;">
-    <img src="https://gitee.com/hearotop/note/raw/master/assert/zfb.jpg" alt="支付宝" style="width: 200px; height: 200px; border-radius: 10px;">
+    <img src="https://gitee.com/hearotop/note/raw/master/assert/wx.jpg" alt="WeChat" style="width: 200px; height: 200px; border-radius: 10px;">
+    <img src="https://gitee.com/hearotop/note/raw/master/assert/zfb.jpg" alt="Alipay" style="width: 200px; height: 200px; border-radius: 10px;">
 </div>
