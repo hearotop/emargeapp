@@ -12,7 +12,7 @@
 *.docx
 *.doc
 
-
+/describe/
 
 
 # Flutter repo-specific
