@@ -82,17 +82,7 @@
   <p>❤️ 珍爱生命，关怀你我 ❤️</p>
 </div>
 
-### 如果喜欢请赞助一下吧！🫠
-
-欢迎通过 GitHub Sponsors 支持我：
-
-<p>
-  <a href="https://github.com/sponsors/hearotop">
-    <img src="https://img.shields.io/badge/Sponsor%20me%20on-GitHub%20Sponsors-ea4aaa?style=for-the-badge&logo=githubsponsors&logoColor=white" alt="Sponsor me on GitHub Sponsors">
-  </a>
-</p>
-
-也可以通过微信或支付宝赞助：
+### 也可以通过微信或支付宝赞助：
 
 <div style="display: flex; gap: 10px; margin-top: 20px;">
     <img src="https://gitee.com/hearotop/note/raw/master/assert/wx.jpg" alt="微信" style="width: 200px; height: 200px; border-radius: 10px;">

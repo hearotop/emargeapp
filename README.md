@@ -81,17 +81,6 @@ For questions, suggestions, or manufacturer cooperation, please reach out at:
 <div align="center">
   <p>❤️ Cherish life, care for one another ❤️</p>
 </div>
-
-### Sponsor this project 🫠
-
-If you find this project helpful, please consider sponsoring me on GitHub Sponsors:
-
-<p>
-  <a href="https://github.com/sponsors/hearotop">
-    <img src="https://img.shields.io/badge/Sponsor%20me%20on-GitHub%20Sponsors-ea4aaa?style=for-the-badge&logo=githubsponsors&logoColor=white" alt="Sponsor me on GitHub Sponsors">
-  </a>
-</p>
-
 You can also support me via WeChat or Alipay:
 
 <div style="display: flex; gap: 10px; margin-top: 20px;">
