@@ -9,8 +9,8 @@
 
 .vscode/
 .idea/
-.docx
-.doc
+*.docx
+*.doc
 
 
 
