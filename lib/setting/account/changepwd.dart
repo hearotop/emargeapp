@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:regexed_validator/regexed_validator.dart';
 
 class ChangePasswordPage extends StatefulWidget {
@@ -24,6 +25,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
         title: Text('更改密码'),
         backgroundColor: Colors.white,
         elevation: 0,
+        systemOverlayStyle: SystemUiOverlayStyle.dark,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

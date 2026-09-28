@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:namer_app/setting/account/changepwd.dart';
 import 'package:namer_app/setting/account/changeemail.dart';
 
@@ -8,6 +9,7 @@ class SecurityPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('安全设置'),
+        systemOverlayStyle: SystemUiOverlayStyle.dark,
       ),
       body: ListView(
         children: <Widget>[

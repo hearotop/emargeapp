@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:regexed_validator/regexed_validator.dart';
 
 class ChangeEmailPage extends StatefulWidget {
@@ -21,6 +22,7 @@ class _ChangeEmailPageState extends State<ChangeEmailPage> {
         backgroundColor: Colors.white,
         elevation: 0,
         iconTheme: IconThemeData(color: Colors.blue),
+        systemOverlayStyle: SystemUiOverlayStyle.dark,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

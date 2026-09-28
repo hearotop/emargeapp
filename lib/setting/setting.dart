@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:namer_app/mydata.dart';
 import 'package:namer_app/setting/account/securtiy.dart';
 
@@ -15,6 +16,7 @@ class SettingsPage extends StatelessWidget {
         centerTitle: true,
         scrolledUnderElevation: 1.0,
         backgroundColor: themeBlue,
+        systemOverlayStyle: SystemUiOverlayStyle.dark,
       ),
       body: ListView(
         children: <Widget>[

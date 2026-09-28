@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:namer_app/setting/setting.dart';
+import 'package:namer_app/my_devices.dart';
+import 'package:namer_app/widgets/privacy_dialog.dart';
 
 class ProfilePage extends StatelessWidget {
   List<Map<String, dynamic>> menuItems = [
@@ -22,6 +24,11 @@ class ProfilePage extends StatelessWidget {
       'title': '设置',
       'icon': Icons.settings_outlined,
       'color': Colors.grey,
+    },
+    {
+      'title': '隐私政策',
+      'icon': Icons.privacy_tip_outlined,
+      'color': Colors.blue,
     },
   ];
 
@@ -167,8 +174,9 @@ class ProfilePage extends StatelessWidget {
         );
         break;
       case 1:
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('我的设备')),
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => MyDevicesPage()),
         );
         break;
       case 2:
@@ -181,6 +189,9 @@ class ProfilePage extends StatelessWidget {
           context,
           MaterialPageRoute(builder: (context) => SettingsPage()),
         );
+        break;
+      case 4:
+        PrivacyDialog.show(context);
         break;
       default:
         ScaffoldMessenger.of(context).showSnackBar(

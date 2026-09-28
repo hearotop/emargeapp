@@ -9,6 +9,13 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <!-- 允许程序访问WiFi网络信息 -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!-- 允许程序改变WiFi网络状态，用于网络定位（无gps情况下的辅助定位） -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <!-- mDNS 组播接收：发现局域网内 ESP32/ESP8266 物联设备 -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
+    <!-- Android 13+ 通过 Wi-Fi 直连/附近设备发现时需要（不强制地理位置） -->
+    <uses-permission android:name="android.permission.NEARBY_WIFI_DEVICES"
+        android:usesPermissionFlags="neverForLocation" />
     <!-- 允许程序访问CellID或WiFi热点来获取粗略的位置 -->
     <!-- 声明所需的权限 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -33,7 +40,7 @@
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.BROADCAST_STICKY" />
     <application android:usesCleartextTraffic="true"
-        android:label="flutter_application_1"
+        android:label="急救设备"
         android:name="${applicationName}"
 
         android:icon="@mipmap/ic_launcher">
@@ -65,17 +72,20 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
-                    <meta-data android:name="com.amap.api.v2.apikey" android:value="f91ca010884b852e822877d86375a153" />
-
 
         <!-- 高德地图定位服务 -->
         <service android:name="com.amap.api.location.APSService" />
+        <service android:name="com.amap.api.map.APSService" />
+         <meta-data
+        android:name="com.amap.api.v2.apikey"
+        android:value="c67248fc1ae1976bcd2e70d1e8983761" />
+
+    <!-- 高德定位服务 -->
     </application>
    
     <!-- Required to query activities that can process text, see:
          https://developer.android.com/training/package-visibility and
          https://developer.android.com/reference/android/content/Intent#ACTION_PROCESS_TEXT.
-
          In particular, this is used by the Flutter engine in io.flutter.plugin.text.ProcessTextPlugin. -->
     <queries>
         <intent>

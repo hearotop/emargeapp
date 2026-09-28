@@ -19,43 +19,62 @@ Supported device types include:
 
 ## ✨ Key Features
 
-- 🗂️ **Nearby device cards**: the home screen shows nearby first-aid devices as a card feed, with device type, location, and online/availability status at a glance
+- 🗂️ **Nearby device cards**: the home screen shows nearby first-aid devices as a card feed with device avatar, real-time distance (Haversine), and auto-resolved address (reverse geocoding)
+- 🟢🟡🔴 **Status indicators**: green = available, yellow = maintenance, red = occupied
+- 🔄 **Auto-refresh**: nearby devices refresh every 30 seconds, with pull-to-refresh support
 - 🗺️ **Real-time map & positioning**: view device distribution on AMap and navigate to a device with one tap
-- 🔗 **IoT device integration**: connect IoT first-aid kits and wearables to obtain real-time device status and health data
-- 🏭 **Open manufacturer access**: an open integration design for first-aid kits — manufacturers of all brands are welcome to connect their devices
-- 🤝 **Device sharing**: users can share their own first-aid devices, giving people nearby one more lifeline in an emergency
-- 📖 **First-aid knowledge guides**: built-in first-aid educational content to help people respond calmly and correctly
+- 📍 **Reverse geocoding**: device addresses auto-resolved via AMap Web API, users can also manually edit
+- 🔗 **IoT device integration**: connect IoT first-aid kits and wearables via mDNS (ESP32/ESP8266)
+- 📡 **Multiple add methods**: auto-discovery, QR scan, NFC, manual add, third-party platform
+- 🤝 **Device sharing**: users can share their own first-aid devices
+- 📖 **First-aid knowledge guides**: built-in first-aid educational content
 - 📞 **Quick dial for emergency contacts**
-- 🔄 **Real-time device status updates**
+- 🔒 **Privacy compliance**: AMap SDK privacy policy dialog on first launch
 
-## 🔌 IoT Device Integration Roadmap
+## 🔌 IoT Device Integration
 
-- **IoT first-aid kits**: once connected, kits can report inventory lists, opening records, and replenishment/maintenance status
-- **Wearable devices**: connect smart watches and bands to obtain health data such as heart rate, and help trigger a call for help when abnormalities are detected
-- **Third-party manufacturers**: a unified device integration specification allows first-aid kits of different brands to connect, building a shared device network together
+- **mDNS discovery**: ESP32/ESP8266 devices on the same WiFi are auto-discovered via `_emarge-device._tcp.local`
+- **IoT first-aid kits**: report inventory, opening records, and maintenance status
+- **Wearable devices**: connect smart watches and bands for health data
+- **Third-party manufacturers**: unified integration spec for all brands
 
 > 📐 For the database design, see *共享应急设备App数据库设计.docx* in this repository.
 
 ## 💡 Technical Highlights
 
-- 🎯 High-precision positioning and navigation based on AMap
-- ⚡ Real-time synchronization of IoT device data
-- 📱 Cross-platform development with Flutter — one codebase for Android / iOS
-- 👥 A clean, user-friendly card-based interface
+- 🎯 AMap integration with Web API fallback for reverse geocoding (bypassing SCODE authentication)
+- ⚡ mDNS device discovery with Android MulticastLock via native MethodChannel
+- 📱 Flutter cross-platform development — one codebase for Android / iOS
+- 🏗️ Haversine distance calculation for real-time proximity
+- 👥 Clean card-based interface with auto-refresh
 
 ### 🛠️ Tech Stack
 
-- [Flutter](https://flutter.dev/)
-- [AMap `amap_map` plugin](https://lbs.amap.com/)
+- [Flutter](https://flutter.dev/) (Dart 3)
+- [AMap `amap_map2` plugin](https://lbs.amap.com/) + Web API
+- [geolocator](https://pub.dev/packages/geolocator) (native positioning fallback)
+- [multicast_dns](https://pub.dev/packages/multicast_dns) (mDNS discovery)
+- [permission_handler](https://pub.dev/packages/permission_handler)
+- [shared_preferences](https://pub.dev/packages/shared_preferences)
 
 ## 📝 How to Use
 
 1. 📱 Open the app
-2. 🔒 Grant location permission
-3. 🗂️ Browse nearby first-aid devices and their status on the home screen cards
-4. 🗺️ Or view device distribution on the map
-5. 👆 Tap a device card to see detailed information
-6. 🚶 Use navigation to reach the device quickly for self-rescue or to help others
+2. 📋 Review and accept the privacy policy (first launch)
+3. 🔒 Grant location permission
+4. 🗂️ Browse nearby first-aid devices with real-time distance and address
+5. 🗺️ Or view device distribution on the map
+6. 👆 Tap a device card to see detailed information
+7. ➕ Add your own devices via auto-discovery, QR, NFC, or manual entry
+8. 🚶 Use navigation to reach the device quickly
+
+## 📂 Project Documentation
+
+Detailed docs are in the `describe/` directory:
+
+- [UI Design](describe/ui-design.md) — page layouts and design constraints
+- [Tech Notes](describe/tech-notes.md) — tech stack, AMap integration, troubleshooting
+- [Dev Log](describe/dev-log-2026-09-28.md) — development progress
 
 ## 🤝 Contributing
 
@@ -81,6 +100,7 @@ For questions, suggestions, or manufacturer cooperation, please reach out at:
 <div align="center">
   <p>❤️ Cherish life, care for one another ❤️</p>
 </div>
+
 You can also support me via WeChat or Alipay:
 
 <div style="display: flex; gap: 10px; margin-top: 20px;">

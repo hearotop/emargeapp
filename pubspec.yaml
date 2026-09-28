@@ -13,7 +13,17 @@ dependencies:
     sdk: flutter
 
   regexed_validator: ^2.0.0+1
-  amap_map: ^1.0.15
+  amap_map2: ^1.0.5
+  # 高德 Key/隐私配置（amap_map2 的基础包，直接引用以配合 amap_map2 使用）
+  x_amap_base: ^1.0.3
+  # ESP32/ESP8266 物联设备局域网发现（mDNS）
+  multicast_dns: ^0.3.3
+  # 运行时权限申请（定位等）
+  permission_handler: ^11.3.1
+  # 本地存储（隐私政策同意状态等）
+  shared_preferences: ^2.2.3
+  # 系统定位（不依赖高德 native SDK，绕过 SCODE 鉴权问题）
+  geolocator: ^13.0.4
 
 dev_dependencies:
   flutter_test:

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class MyInfoPage extends StatelessWidget {
   // 定义主题蓝色
@@ -13,6 +14,7 @@ class MyInfoPage extends StatelessWidget {
         elevation: 0,
         scrolledUnderElevation: 1.0,
         backgroundColor: themeBlue,
+        systemOverlayStyle: SystemUiOverlayStyle.dark,
       ),
       body: ListView(
         padding: EdgeInsets.symmetric(vertical: 16.0),
