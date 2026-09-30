@@ -9,9 +9,7 @@ import 'package:namer_app/view/chatbot.dart';
 import 'package:namer_app/widgets/privacy_dialog.dart';
 
 import 'search.dart'; // 导入自定义的搜索委托类
-
-/// 高德地图 Android 平台 Key（在高德开放平台申请，已绑定本机 SHA1+包名）
-const String _amapAndroidKey = 'c67248fc1ae1976bcd2e70d1e8983761';
+import 'config/amap_keys.dart';// 导入高德地图 API Key 配置文件 示例在 amap_keys.example.dart 中
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -77,7 +75,7 @@ class _AppEntryState extends State<_AppEntry> {
     // Key 通过 AMapInitializer.init 传给 AMapWidget（amap_map 包不读 manifest 的 meta-data）
     AMapInitializer.init(
       context,
-      apiKey: const AMapApiKey(androidKey: _amapAndroidKey),
+      apiKey: const AMapApiKey(androidKey: AmapKeys.androidKey),
     );
     AMapInitializer.updatePrivacyAgree(
       const AMapPrivacyStatement(

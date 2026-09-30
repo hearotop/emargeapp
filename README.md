@@ -68,12 +68,113 @@ Supported device types include:
 7. ➕ Add your own devices via auto-discovery, QR, NFC, or manual entry
 8. 🚶 Use navigation to reach the device quickly
 
+## 🔑 AMap API Key Configuration
+
+This project uses [AMap (高德地图)](https://lbs.amap.com/) for maps, positioning, and reverse geocoding. You need to apply for API keys on the [AMap Open Platform](https://console.amap.com/) before running the app.
+
+> ⚠️ API keys are **not** stored in the repository for security. You must configure them locally after cloning.
+
+### 1. Apply for AMap Keys
+
+1. Go to [AMap Console → Application Management → My Applications](https://console.amap.com/dev/key/app)
+2. Create an application (or use an existing one)
+3. Add two keys under the application:
+
+| Key Type | Platform | Usage |
+|----------|----------|-------|
+| Android Key | **Android** | Native map & positioning SDK (`amap_map2`) |
+| Web Service Key | **Web Service** | Reverse geocoding API |
+
+> When creating the Android key, you must provide the **package name** (`com.example.emergeapp`) and **SHA1** of your signing certificate.
+>
+> Get the debug SHA1:
+> ```bash
+> keytool -list -v -keystore ~/.android/debug.keystore -alias androiddebugkey -storepass android -keypass android
+> ```
+
+### 2. Configure Dart Keys
+
+Copy the template file and fill in your keys:
+
+```bash
+cp lib/config/amap_keys.example.dart lib/config/amap_keys.dart
+```
+
+Edit `lib/config/amap_keys.dart`:
+
+```dart
+class AmapKeys {
+  AmapKeys._();
+  static const String androidKey = 'YOUR_AMAP_ANDROID_KEY';
+  static const String webKey = 'YOUR_AMAP_WEB_KEY';
+}
+```
+
+> `lib/config/amap_keys.dart` is listed in `.gitignore` and will **not** be uploaded to GitHub.
+
+### 3. Configure Android Native Key
+
+The AMap native SDK reads the key from `AndroidManifest.xml` via a Gradle manifest placeholder.
+
+Copy the template and fill in your SDK paths and Android key:
+
+```bash
+cp android/local.properties.example android/local.properties
+```
+
+Edit `android/local.properties`:
+
+```properties
+flutter.sdk=/path/to/flutter
+sdk.dir=/path/to/Android/Sdk
+amap.api.key=YOUR_AMAP_ANDROID_KEY
+```
+
+> `android/local.properties` is already listed in `.gitignore`.
+
+### 4. Run the App
+
+```bash
+flutter pub get
+flutter run
+```
+
+## 🩹 Troubleshooting
+
+### AMap shows a black screen on the emulator but works on a real device
+
+**Root cause**: The AMap Android SDK only ships native libraries (`.so`) for **ARM** architectures (`armeabi-v7a`, `arm64-v8a`). It does **not** provide x86 / x86_64 binaries. Most Android emulators running on Intel/AMD PCs use the x86_64 ABI, so the SDK's native methods cannot be loaded:
+
+```
+java.lang.UnsatisfiedLinkError: No implementation found for void com.autonavi.base.ae.gmap.GLMapEngine.nativeMainThreadTrigger(...)
+```
+
+| Environment | ABI | AMap .so available? | Map loads? |
+|-------------|-----|---------------------|------------|
+| Real Android device | arm64-v8a / armeabi-v7a | ✅ Yes | ✅ Yes |
+| x86_64 emulator (Intel/AMD PC) | x86_64 | ❌ No | ❌ Black screen |
+| arm64 emulator (Apple Silicon Mac) | arm64-v8a | ✅ Yes | ✅ Yes |
+
+**Solutions**:
+
+1. **Use a real device for debugging** (recommended) — all modern Android phones are ARM-based.
+2. **Use an arm64-v8a emulator** — works natively on Apple Silicon Macs (slow on x86 PCs without hardware acceleration).
+   - In Android Studio: **Tools → Device Manager → + Create Virtual Device → Next → Other Images tab → download an `arm64-v8a` image → Finish**.
+3. **ABI filtering is already configured** in `android/app/build.gradle.kts`:
+   ```kotlin
+   ndk { abiFilters += listOf("arm64-v8a", "armeabi-v7a") }
+   ```
+   This may cause `INSTALL_FAILED_NO_MATCHING_ABIS` on x86_64 emulators, which is expected.
+
+> 💡 See [describe/amap.md](describe/amap.md) for the full explanation.
+
 ## 📂 Project Documentation
 
 Detailed docs are in the `describe/` directory:
 
 - [UI Design](describe/ui-design.md) — page layouts and design constraints
 - [Tech Notes](describe/tech-notes.md) — tech stack, AMap integration, troubleshooting
+- [AMap Integration](describe/amap.md) — AMap SDK architecture & emulator black screen issue
 - [Dev Log](describe/dev-log-2026-09-28.md) — development progress
 
 ## 🤝 Contributing

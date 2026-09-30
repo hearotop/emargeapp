@@ -33,7 +33,7 @@
 
 ## 🔌 物联设备接入
 
-- **mDNS 发现**：ESP32/ESP8266 设备在同一 WiFi 下通过 `_emarge-device._tcp.local` 自动发现
+- **mDNS 发现**：IOT设备在同一 WiFi 下通过 `_emarge-device._tcp.local` 自动发现
 - **物联急救箱**：接入后可上报箱内物资清单、开箱记录、补给与维保状态
 - **可穿戴设备**：接入智能手表、智能手环，获取心率等健康数据，异常时辅助发起求助
 - **第三方厂商**：提供统一的设备接入规范，不同品牌的急救箱均可接入
@@ -68,12 +68,114 @@
 7. ➕ 通过自动发现、扫码、NFC 或手动方式添加自己的设备
 8. 🚶 使用导航功能快速到达设备位置，开展自救或救助他人
 
+## 🔑 高德地图 API Key 配置
+
+本项目使用 [高德地图](https://lbs.amap.com/) 提供地图、定位与逆向地理编码服务。运行前需在 [高德开放平台](https://console.amap.com/) 申请 API Key。
+
+> ⚠️ 出于安全考虑，API Key **不会** 存入仓库。克隆后需在本地自行配置。
+
+### 1. 申请高德 Key
+
+1. 进入 [高德控制台 → 应用管理 → 我的应用](https://console.amap.com/dev/key/app)
+2. 创建应用（或使用已有应用）
+3. 在应用下添加两个 Key：
+
+| Key 类型     | 服务平台           | 用途                                |
+| ------------ | ------------------ | ----------------------------------- |
+| Android Key  | **Android**  | 原生地图与定位 SDK（`amap_map2`） |
+| Web 服务 Key | **Web 服务** | 逆向地理编码 API                    |
+
+> 创建 Android Key 时，需填写**包名**（`com.example.emergeapp`）和签名证书的 **SHA1**。
+>
+> 获取调试版 SHA1：
+>
+> ```bash
+> keytool -list -v -keystore ~/.android/debug.keystore -alias androiddebugkey -storepass android -keypass android
+> ```
+
+### 2. 配置 Dart 端 Key
+
+复制模板文件并填入你的 Key：
+
+```bash
+cp lib/config/amap_keys.example.dart lib/config/amap_keys.dart
+```
+
+编辑 `lib/config/amap_keys.dart`：
+
+```dart
+class AmapKeys {
+  AmapKeys._();
+  static const String androidKey = '你的高德Android_Key';
+  static const String webKey = '你的高德Web服务_Key';
+}
+```
+
+> `lib/config/amap_keys.dart` 已加入 `.gitignore`，**不会** 上传到 GitHub。
+
+### 3. 配置 Android 原生 Key
+
+高德原生 SDK 通过 Gradle manifestPlaceholders 从 `AndroidManifest.xml` 读取 Key。
+
+复制模板并填入 SDK 路径和 Android Key：
+
+```bash
+cp android/local.properties.example android/local.properties
+```
+
+编辑 `android/local.properties`：
+
+```properties
+flutter.sdk=/path/to/flutter
+sdk.dir=/path/to/Android/Sdk
+amap.api.key=你的高德Android_Key
+```
+
+> `android/local.properties` 已在 `.gitignore` 中。
+
+### 4. 运行应用
+
+```bash
+flutter pub get
+flutter run
+```
+
+## 🩹 常见问题
+
+### 高德地图在模拟器黑屏，实体机正常
+
+**根本原因**：高德地图 Android SDK 只提供 **ARM** 架构（`armeabi-v7a`、`arm64-v8a`）的 native 动态库（`.so` 文件），**不提供 x86 / x86_64 架构**。在 Intel/AMD PC 上运行的大多数 Android 模拟器使用 x86_64 架构，因此 SDK 的 native 方法无法加载：
+
+```
+java.lang.UnsatisfiedLinkError: No implementation found for void com.autonavi.base.ae.gmap.GLMapEngine.nativeMainThreadTrigger(...)
+```
+
+| 运行环境 | ABI 架构 | 高德 .so 是否存在 | 地图能否加载 |
+|----------|----------|-------------------|--------------|
+| Android 真机 | arm64-v8a / armeabi-v7a | ✅ 存在 | ✅ 正常 |
+| x86_64 模拟器（Intel/AMD PC） | x86_64 | ❌ 不存在 | ❌ 黑屏 |
+| arm64 模拟器（Apple Silicon Mac） | arm64-v8a | ✅ 存在 | ✅ 正常 |
+
+**解决方案**：
+
+1. **使用真机调试**（推荐）—— 几乎所有 Android 真机都是 ARM 架构。
+2. **使用 arm64-v8a 架构的模拟器**—— 在 Apple Silicon Mac 上可原生加速，x86 PC 上无硬件加速会很慢。
+   - Android Studio 操作：**Tools → Device Manager → + Create Virtual Device → Next → Other Images 标签 → 下载 arm64-v8a 镜像 → Finish**。
+3. **本项目已配置 ABI 过滤**，位于 `android/app/build.gradle.kts`：
+   ```kotlin
+   ndk { abiFilters += listOf("arm64-v8a", "armeabi-v7a") }
+   ```
+   这可能导致 x86_64 模拟器安装时出现 `INSTALL_FAILED_NO_MATCHING_ABIS`，属正常现象。
+
+> 💡 完整说明见 [describe/amap.md](describe/amap.md)。
+
 ## 📂 项目文档
 
 详细文档位于 `describe/` 目录下：
 
 - [界面设计文档](describe/ui-design.md) — 页面布局与设计约束
 - [技术文档](describe/tech-notes.md) — 技术栈、高德集成、常见问题
+- [高德集成说明](describe/amap.md) — 高德 SDK 架构与模拟器黑屏问题
 - [开发日志](describe/dev-log-2026-09-28.md) — 开发进度记录
 
 ## 🤝 贡献指南

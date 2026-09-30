@@ -5,6 +5,15 @@ plugins {
     id("dev.flutter.flutter-gradle-plugin")
 }
 
+// 从 local.properties 读取高德 API Key（local.properties 已加入 .gitignore，不会上传）
+import java.util.Properties
+val localProperties = Properties()
+val localPropertiesFile = rootProject.file("local.properties")
+if (localPropertiesFile.exists()) {
+    localProperties.load(localPropertiesFile.inputStream())
+}
+val amapApiKey = localProperties.getProperty("amap.api.key", "")
+
 android {
     namespace = "com.example.emergeapp"
     compileSdk = flutter.compileSdkVersion
@@ -37,6 +46,8 @@ android {
 
     defaultConfig {
         applicationId = "com.example.emergeapp"
+        // 高德地图 Key 通过 manifestPlaceholders 注入 AndroidManifest.xml
+        manifestPlaceholders["amapApiKey"] = amapApiKey
         minSdk = flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode

@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'dart:io';
 
+import '../config/amap_keys.dart';
+
 /// 高德 Web 服务 API 客户端（逆向地理编码）。
 ///
 /// 设计动机：amap_map2 native SDK 在新版本高德控制台开启 SCODE 校验后，
@@ -8,7 +10,7 @@ import 'dart:io';
 /// HTTPS + Key 鉴权，不依赖 native SDK，不受 SCODE 影响。
 ///
 /// 鉴权要求：
-/// - 当前 [_webKey] 复用了 Android Key `c67248fc1ae1976bcd2e70d1e8983761`
+/// - Key 从 config/amap_keys.dart 读取，不硬编码
 /// - 需要在高德控制台为该 Key 添加「Web 服务」平台权限，否则会返回
 ///   `INVALID_USER_SCODE` / `USERKEY_PLAT_NOMATCH` 错误
 /// - 操作路径：高德开放平台 → 控制台 → 应用管理 → 我的应用 →
@@ -20,7 +22,7 @@ class AMapGeoClient {
 
   /// 高德 Web 服务 Key（与 Android Key 不同，单独申请的 Web 服务类型 Key）
   /// 用于逆向地理编码等 Web API 调用，不依赖 native SDK，不受 SCODE 影响
-  static const String _webKey = 'defc27912ed9431ed4dc9ad3e52b1371';
+  static const String _webKey = AmapKeys.webKey;
 
   /// 简单内存缓存：坐标 → 地址，避免 30 秒刷新时重复请求
   /// 缓存有效期 5 分钟，过期后重新查询

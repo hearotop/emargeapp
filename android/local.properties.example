@@ -1,0 +1,9 @@
+# local.properties 示例文件
+# 复制本文件为 local.properties 并填入你的实际路径和 Key
+# local.properties 已加入 .gitignore，不会上传到 GitHub
+
+flutter.sdk=/path/to/flutter
+sdk.dir=/path/to/Android/Sdk
+
+# 高德地图 Android 平台 Key（在高德开放平台申请）
+amap.api.key=YOUR_AMAP_ANDROID_KEY

@@ -125,3 +125,6 @@ app.*.symbols
 !/dev/ci/**/Gemfile.lock
 # Widget Preview related
 .widget_preview/
+
+# AMap API Keys (sensitive, do not commit)
+lib/config/amap_keys.dart
